@@ -1,1 +1,2 @@
 # Projects-JS
+JavaScript course
