@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>ROCK PAPER SCISSORS</title>
+        <style>
+            body, html {
+                height: 100%;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .buttons-container, .symbol-container {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                width: 100%;
+                margin: 7px;
+            }
+            .buttons {
+                background-color: lightgray; /* Dodano dla lepszej widoczności */
+                border: 1px solid black; /* Dodano dla lepszej widoczności */
+                padding: 10px 20px;
+                margin: 10px; /* Zmieniono z 1%, aby lepiej pasowało do layoutu */
+                cursor: pointer; /* Dodano wskaźnik, aby było wiadomo, że można kliknąć */
+            }
+            .selectedSymbol {
+                background-color: cadetblue;
+                padding: 20px;
+                margin: 10px; /* Zmieniono z 1%, aby lepiej pasowało do layoutu */
+                text-align: center;
+                color: black; /* Dodano dla lepszej widoczności */
+                flex-grow: 1;
+                border: 2px solid black; /* Sprawia, że divy z symbolem rozciągają się, aby wypełnić dostępną przestrzeń */
+            }
+            .winner-announcement {
+                background-color: rgb(222, 212, 198);
+                padding: 50px;
+                margin: 10px; /* Zmieniono z 1%, aby lepiej pasowało do layoutu */
+                text-align: center;
+                color: black; /* Dodano dla lepszej widoczności */
+                border: 2px solid black; /* Sprawia, że divy z symbolem rozciągają się, aby wypełnić dostępną przestrzeń */
+            }
+        </style>
+    </head>
+    <body>
+        <h1>ROCK PAPER SCISSORS</h1>
+        <div class="buttons-container">
+            <button onclick="updateToRock()" class = "buttons">ROCK</button>
+            <button onclick="updateToPaper()" class = "buttons">PAPER</button>
+            <button onclick="updateToScissors()" class = "buttons">SCISSORS</button>
+        </div>
+        <div class="symbol-container">
+            <div id = "userSymbol" class = "selectedSymbol">????????</div>
+            <div id = "computerSymbol" class = "selectedSymbol">????????</div>
+        </div>
+        <div id = "winnerAnnouncement" class="winner-announcement">Winner Announcement</div>
+        <script>
+            let userSymbol= "";
+            let computerSymbol= "";
+
+            function updateComputer(){
+                let temp = 0;
+                let randomSymbol = Math.floor(Math.random() * (3 - 0) + 0 )
+
+                if (randomSymbol === 0) {
+                    temp = "ROCK";
+                }else if (randomSymbol === 1) {
+                    temp = "PAPER";
+                }else if (randomSymbol === 2) {
+                    temp = "SCISSORS";
+                }
+                return temp
+            }
+
+            function winnerAnnouncement(){
+                if (userSymbol === computerSymbol) {
+                    document.getElementById('winnerAnnouncement').textContent = "DRAW";
+                }else if (userSymbol !== computerSymbol) {
+                    if (userSymbol === "ROCK" && computerSymbol === "PAPER") {
+                        document.getElementById('winnerAnnouncement').textContent = "YOU LOST";
+                    } else if (userSymbol === "ROCK" && computerSymbol === "SCISSORS"){
+                        document.getElementById('winnerAnnouncement').textContent = "YOU WIN";
+                    } else if (userSymbol === "PAPER" && computerSymbol === "SCISSORS"){
+                        document.getElementById('winnerAnnouncement').textContent = "YOU LOST";
+                    } else if (userSymbol === "PAPER" && computerSymbol === "ROCK"){
+                        document.getElementById('winnerAnnouncement').textContent = "YOU WIN";
+                    } else if (userSymbol === "SCISSORS" && computerSymbol === "ROCK"){
+                        document.getElementById('winnerAnnouncement').textContent = "YOU LOST";
+                    } else if (userSymbol === "SCISSORS" && computerSymbol === "PAPER"){
+                        document.getElementById('winnerAnnouncement').textContent = "YOU WIN";
+                    }
+                }
+            }
+
+            function updateToRock() {
+                userSymbol = "ROCK";
+                computerSymbol = updateComputer();
+                document.getElementById('userSymbol').textContent = userSymbol;
+                document.getElementById('computerSymbol').textContent = computerSymbol;
+                winnerAnnouncement()
+            }
+
+            function updateToPaper() {
+                userSymbol = "PAPER";
+                computerSymbol = updateComputer();
+                document.getElementById('userSymbol').textContent = userSymbol;
+                document.getElementById('computerSymbol').textContent = computerSymbol;
+                winnerAnnouncement()
+            }
+
+            function updateToScissors() {
+                userSymbol = "SCISSORS";
+                computerSymbol = updateComputer();
+                document.getElementById('userSymbol').textContent = userSymbol;
+                document.getElementById('computerSymbol').textContent = computerSymbol;
+                winnerAnnouncement()
+            }
+        </script>
+    </body>
+</html>
+
