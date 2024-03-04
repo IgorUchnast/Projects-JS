@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Ex - 1</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <button onclick="showQuantity()">Show Quantity</button>
+        <button onclick="addToCart(quantity)">Add to cart</button>
+        <button onclick="addPlusTwo()">+2</button>
+        <button onclick="addPlusThree()">+3</button>
+        <button onclick="reset()">Reset Cart</button>
+        <div id = "showQuantity">0</div>
+        <script>
+            let quantity = 0;
+            function updateQuantity(){
+                document.getElementById('showQuantity').textContent = quantity
+            }
+            function showQuantity(){
+                console.log(`Cart Quantity: ${quantity}`);
+                updateQuantity();
+            }
+            function addToCart(){
+                quantity = quantity + 1
+                console.log(`Cart Quantity: ${quantity}`);
+                updateQuantity();
+            }
+            function addPlusTwo(){
+                quantity = quantity + 2
+                console.log(`Cart Quantity: ${quantity}`);
+                updateQuantity();
+            }
+            function addPlusThree(){
+                quantity = quantity + 3
+                console.log(`Cart Quantity: ${quantity}`);
+                updateQuantity();
+            }
+            function reset(){
+                quantity = 0
+                console.log(`Cart Quantity: ${quantity}`);
+                updateQuantity();
+            }
+        </script> 
+    </body>
+</html>
